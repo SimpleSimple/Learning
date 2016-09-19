@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+</body>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    getApiData();
+})
+
+function getApiData() {
+    $.ajax({
+        'type': 'get',
+        'url': 'http://api.99live.com/api.php?s=/Live/getVipCourseList/cateid/73',
+        'dataType': "jsonp",
+        'jsonp': 'jsoncallback',
+        'success': function(data) {
+            alert(data);
+        },
+        'error': function() {
+            alert('fail');
+        }
+    })
+}
+</script>
+
+</html>
