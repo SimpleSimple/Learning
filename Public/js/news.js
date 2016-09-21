@@ -34,16 +34,36 @@ function formValidate() {
         var content = $.trim($("#content").val());
         var author = $.trim($("#author").val());
 
-        if (checkScriptChar(title)) {
-            $("#title").next("span").next("span").text("标题有非法内容");
+        if (title == "" || title == null || title == undefined) {
+            $("#title").next("span").next("span").addClass("error").text("标题不能为空");
             return false;
-        }else if(checkScriptChar(content)){
-        	return false;
-        }else if(checkScriptChar(author)){
-        	return false;
-        }
+        } else $("#title").next("span").next("span").removeClass("error");
 
-        
+        if (content == "" || content == null || content == undefined) {
+            $("#content").next("span").addClass("error").text("内容不能为空");
+            return false;
+        } else $("#content").next("span").removeClass("error");
+
+        // if (author == "" || author == null || author == undefined) {
+        //     $("#author").next("span").addClass("error").text("作者不能为空");
+        //     return false;
+        // }
+
+        if (checkScriptChar(title)) {
+            $("#title").next("span").next("span").addClass("error").text("标题有非法内容");
+            return false;
+        } else $("#title").next("span").next("span").removeClass("error");
+
+        if (checkScriptChar(content)) {
+            $("#content").next("span").addClass("error").text("内容有非法内容");
+            return false;
+        } else $("#content").next("span").removeClass("error");
+
+        if (checkScriptChar(author)) {
+            $("#author").next("span").addClass("error").text("作者有非法内容");
+            return false;
+        } else $("#author").next("span").removeClass("error");
+
     });
 }
 
