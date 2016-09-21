@@ -29,4 +29,15 @@ class NewsController extends Controller
         }
         $this->display();
     }
+
+    function list() {
+        $news = D("news");
+
+        $list = $news->where("1=1")->select();
+        if (isset($list)) {
+            $this->assign("list", $list);
+        }
+        $this->display();
+    }
+
 }
