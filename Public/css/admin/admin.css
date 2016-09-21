@@ -1,0 +1,102 @@
+.f_red {
+	color:#FF0000;
+}
+.f_green {
+	color:#00FF00;
+}
+.f_blue {
+	color:#0000FF;
+}
+.f_gray {
+	color:#999;
+}
+/**
+ * 顶部导航和侧边
+ */
+#my_container {
+    margin-top: 30px;
+    padding: 0 15px;
+}
+.my_side_top_nav {
+	padding-left: 3%;
+	padding-right: 3%;
+}
+.my_side_top_nav input {
+	border-color: #222;
+	background: #333;
+}
+.my_side_top_nav button {
+	border-color: #666;
+	background: #999;
+}
+.my_side_nav {
+	margin-top: 40px;
+	margin-bottom: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 0 #fff;
+	background-color: #f7f5fa;
+	border-radius: 5px;
+	width:100%;
+}
+.my_side_nav ul li {
+	margin-left:15px;
+}
+.li_active {
+	background:#CCC;
+}
+.my_img_box {
+	margin:5px;
+	text-align:center;
+}
+.my_img_list {
+	text-align:center;
+}
+.my_image_del {
+	border-radius: 4px;
+	transition: all 0.2s ease-in-out 0s;
+    background: none repeat scroll 0 0 #FF0000;
+    cursor: pointer;
+    float: right;
+    height: 20px;
+    padding-left: 0px;
+    position: absolute;
+    right: 25px;
+    top: 8px;
+    width: 20px;
+}
+
+.my_icon_ul {
+	padding-left: 0;
+	padding-bottom: 1px;
+	margin-bottom: 20px;
+	list-style: none;
+	overflow: hidden;
+}
+.my_icon_ul li {
+	width:12%;
+	float: left;
+	height: 115px;
+	padding: 10px;
+	margin: 0 -1px -1px 0;
+	font-size: 12px;
+	line-height: 1.4;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+.my_icon_ul .glyphicon {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-size: 24px;
+}
+.my_icon_ul .glyphicon-class {
+	display: block;
+	margin-top: 10px;
+	text-align: center;
+	word-wrap: break-word;
+}
+.my_menu_icon {
+	font-size:16px;
+	margin-right:10px;
+	color:#999;
+}
