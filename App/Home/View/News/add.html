@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<form method="POST" action="{:U('News/add')}" enctype="multipart/form-data" id="form1">
+<table id="table1" style="width:50%;">
+<tr>
+<td>标题：</td>
+<td>
+<input type="text" id="title" name="title" />
+剩余<span class="remain-word">20</span>字
+<span class="tips"></span></td>
+</tr>
+<tr>
+<td valign="top">内容：</td>
+<td>
+<textarea id="content" name="content" style="width:400px;height:150px;"></textarea>
+<span class="tips"></span>
+</td>
+<tr>
+<td>作者：</td>
+<td>
+<input type="text" id="author" name="author" style="width:120px;">
+<!-- <span class="tips"></span> -->
+</td>
+<tr>
+<td></td>
+<td><input type="submit" value="提交"></td>
+</tr>
+</form>
+</body>
+<script type="text/javascript" src="/learntp/Public/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/learntp/Public/js/news.js"></script>
+</html>
