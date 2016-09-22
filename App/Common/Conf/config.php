@@ -17,9 +17,15 @@ $config_all = array(
     'SHOW_PAGE_TRACE'      => true,
 
     'REDIS_HOST'           => '127.0.0.1',
-    'REDIS_PORT'           => 6379,
-    'REDIS_TIMEOUT'        => 1,
+    'REDIS_PORT'           => '6379', //端口号
+    'REDIS_AUTH'           => '',
+    'REDIS_TIMEOUT'        => '300', //超时时间
+    'REDIS_DB_PREFIX'      => '',
 
+    'DATA_CACHE_TYPE'      => 'Redis', // 查询缓存
+    'DATA_CACHE_TIMEOUT'   => 1,
+    'DATA_CACHE_TIME'      => 60,
+    'DATA_CACHE_PREFIX'    => '',
 );
 
 switch ($_SERVER['SERVER_NAME']) {
