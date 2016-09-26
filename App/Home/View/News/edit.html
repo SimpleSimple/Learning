@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="/learning/Public/css/home/news.css">
+</head>
+<body>
+
+<form method="POST" action="" enctype="multipart/form-data" id="form1">
+<table id="main" style="width:50%;">
+
+<tr>
+	<td></td>
+	<td>
+	<!-- <input type="hidden" name="id" value="<?php echo (!empty($model['id'])?$model['id']:0); ?>"> -->
+	<input type="hidden" name="id" value="{$model['id']?(int)$model['id']:0}">
+	</td>
+</tr>
+
+<tr>
+<td>标题：</td>
+<td>
+<input type="text" id="title" name="title" value="{$model.title}" />
+剩余<span class="remain-word">20</span>字
+<span class="tips"></span></td>
+</tr>
+<tr>
+<td valign="top">内容：</td>
+<td>
+<textarea id="content" name="content" style="width:400px;height:150px;">{$model.content}</textarea>
+<span class="tips"></span>
+</td>
+<tr>
+<td>作者：</td>
+<td>
+<input type="text" id="author" name="author" style="width:120px;" value="{$model.author}">
+<span class="tips"></span>
+</td>
+<tr>
+<td></td>
+<td><input type="submit" value="提交"></td>
+</tr>
+</form>
+</body>
+<script type="text/javascript" src="/learning/Public/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/learning/Public/js/news.js"></script>
+</html>

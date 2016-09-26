@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+    </title>
+    <link href="/learning/Public/css/home/news.css" rel="stylesheet" type="text/css">
+    </link>
+    <script type="text/javascript">
+    function del(id) {
+        if (confirm("确认是否删除此项") == true) {
+            var url = "{:U('Home/News/delete/id/'.'"+id+"')}";
+            location.href = url;
+        } else return false;
+    }
+    </script>
+</head>
+
+<body>
+<div style="width:99%;margin:0 auto;">
+	<input type="button" name="add" value="添加" onclick="location.href='{:U('/Home/News/add')}';">
+</div>
+    <table class="table" style="width:99%;margin:0 auto;">
+        <tr>
+            <th>
+                编号
+            </th>
+            <th>
+                标题
+            </th>
+            <th align="center">
+                添加时间
+            </th>
+            <th align="center">
+                更新时间
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        <foreach item="vo" name="list">
+            <tr>
+                <td>
+                    {$vo.id}
+                </td>
+                <td>
+                    {$vo.title}
+                </td>
+                <td align="center">
+                    {$vo.createdtime}
+                </td>
+                <td align="center">
+                    {$vo.updatedtime}
+                </td>
+                <td align="center">
+                    <a href="{:U('Home/News/edit/id/'.$vo['id'])}">
+                            编辑
+                        </a>
+                    <a href="javascript:;" onclick="del({$vo['id']})">
+                            删除
+                        </a>
+                </td>
+            </tr>
+        </foreach>
+    </table>
+</body>
+
+</html>
