@@ -4,14 +4,31 @@
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="/learning/Public/css/home/news.css">
-    <script type="text/javascript" src="/learning/Public/js/ueditor"></script>
+    <link rel="stylesheet" type="text/css" href="/learning/Public/js/ueditor/themes/default/css/ueditor.css">
+    <script type="text/javascript" src="/learning/Public/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/learning/Public/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/learning/Public/js/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/learning/Public/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+    var ue = UE.getEditor('editor', {
+        initialFrameWidth: "100%",
+        //默认的编辑区域高度
+        initialFrameHeight:300,
+        //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+        toolbars: [
+            ['FullScreen', 'Source', 'Undo', 'Redo', 'Bold', 'insertimage', 'emotion', 'attachment']
+        ],
+        //关闭elementPath
+        elementPathEnabled: false,
+    });
+    </script>
 </head>
 
 <body>
     <form method="POST" action="{:U('News/add')}" enctype="multipart/form-data" id="form1">
-        <table id="main" style="width:50%;">
+        <table id="main" style="width:80%;">
             <tr>
-                <td>标题：</td>
+                <td width="70px">标题：</td>
                 <td>
                     <input type="text" id="title" name="title" /> 剩余
                     <span class="remain-word">20</span>字
@@ -20,7 +37,8 @@
             <tr>
                 <td valign="top">内容：</td>
                 <td>
-                    <textarea id="content" name="content" style="width:400px;height:150px;"></textarea>
+                    <!-- <textarea id="content" name="content" style="width:400px;height:150px;"></textarea> -->
+                    <script type="text/plain" id="editor"></script>
                     <span class="tips"></span>
                 </td>
                 <tr>
