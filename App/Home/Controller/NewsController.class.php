@@ -3,22 +3,37 @@ namespace Home\Controller;
 
 use Think\Controller;
 
-class NewsController extends Controller
-{
+class NewsController extends Controller {
 
-    public function lists()
-    {
+    public function lists() {
         $news = D("news");
 
-        $list = $news->where("1=1")->select();
+        $count = $news->count();
+
+        $Page = new \Think\Page($count, 25);
+
+        $show = $Page->show();
+
+        $list = $news->where("1=1")->order("updatedtime DESC")->limit($Page->firstRow . ',' . $Page->listRows)->select();
         if (isset($list)) {
             $this->assign("list", $list);
+            $this->assign("page", $show);
         }
         $this->display();
     }
 
-    public function add()
-    {
+    public function setcache(){
+        $now = date("Y-m-d H:i:s", time());
+        S("key", $now, array('type' => 'file', 'expire' => 600));
+
+        $this->display();
+    }
+
+    public function datalist() {
+        $this->display();
+    }
+
+    public function add() {
         if ($_POST) {
             $news = D('news');
             //var_dump($news);
@@ -41,8 +56,7 @@ class NewsController extends Controller
         $this->display();
     }
 
-    public function edit()
-    {
+    public function edit() {
         $news = D("news");
         if (IS_POST) {
             $id      = I('id', 0);
@@ -50,17 +64,18 @@ class NewsController extends Controller
             $content = I('content');
             $author  = I('author');
 
-            $data['title']       = $title;
-            $data['content']     = $content;
-            $data['author']      = $author;
-            $data['createdtime'] = date('Y-m-d H:i:s', time());
+            $data['title']   = $title;
+            $data['content'] = stripslashes(htmlspecialchars_decode($content));
+            $data['author']  = $author;
+            //$data['createdtime'] = date('Y-m-d H:i:s', time());
             $data['updatedtime'] = date('Y-m-d H:i:s', time());
             $rlt                 = $news->where("id=" . $id)->save($data);
             //var_dump("edit=>" . $rlt . " 传参id=>" . $id);
             //var_dump($news->getLastSql());
             if ((int) $rlt > 0) {
                 $url = U("/Home/News/lists");
-                redirect($url);
+                echo "<script>alert('编辑成功');window.location.href='" . $url . "';</script>";
+                //redirect($url);
             } else {
                 $this->display();
             }
@@ -84,14 +99,13 @@ class NewsController extends Controller
     //     $this->display();
     // }
 
-    public function delete()
-    {
+    public function delete() {
         $id  = I('id', 0);
         $res = D("news")->where(array("id" => $id))->delete();
         if ((int) $res > 0) {
             $url = U("Home/News/lists");
             //redirect($url);
-            echo "<script>window.alert('删除成功');location.href='".$url."';</script>";
+            echo "<script>window.alert('删除成功');location.href='" . $url . "';</script>";
         } else {
             echo "<script>alert('删除失败');location.history.go(-1);</script>";
         }
