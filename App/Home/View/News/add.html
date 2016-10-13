@@ -10,16 +10,23 @@
     <script type="text/javascript" src="/learning/Public/js/ueditor/ueditor.all.js"></script>
     <script type="text/javascript" charset="utf-8" src="/learning/Public/js/ueditor/lang/zh-cn/zh-cn.js"></script>
     <script type="text/javascript">
+    window.UEDITOR_HOME_URL="http://localhost/Learning/";
     var ue = UE.getEditor('editor', {
         initialFrameWidth: "100%",
         //默认的编辑区域高度
-        initialFrameHeight:300,
+        initialFrameHeight: 300,
         //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
         toolbars: [
-            ['FullScreen', 'Source', 'Undo', 'Redo', 'Bold', 'insertimage', 'emotion', 'attachment']
+            ['FullScreen', 'Source', 'Undo', 'Redo', 'Bold',
+                'simpleupload', //单图上传,
+                'insertimage',
+                'emotion',
+                'attachment'
+            ]
         ],
-        //关闭elementPath
-        elementPathEnabled: false,
+        serverUrl: "/Learning/Public/js/ueditor/php/controller.php?action=config",
+        imagePathFormat: "/upload/image/{filename}",
+		imageUrlPrefix: "http://localhost/Learning/"
     });
     </script>
 </head>
@@ -30,15 +37,14 @@
             <tr>
                 <td width="70px">标题：</td>
                 <td>
-                    <input type="text" id="title" name="title" /> 剩余
-                    <span class="remain-word">20</span>字
+                    <input type="text" id="title" name="title" /> 剩余<span class="remain-word">20</span>字
                     <span class="tips"></span></td>
             </tr>
             <tr>
                 <td valign="top">内容：</td>
                 <td>
                     <!-- <textarea id="content" name="content" style="width:400px;height:150px;"></textarea> -->
-                    <script type="text/plain" id="editor"></script>
+                    <script type="text/plain" id="editor" name="content"></script>
                     <span class="tips"></span>
                 </td>
                 <tr>

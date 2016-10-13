@@ -1,47 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title></title>
-<link rel="stylesheet" type="text/css" href="/learning/Public/css/home/news.css">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/learning/Public/css/home/news.css">
+    <link rel="stylesheet" type="text/css" href="/learning/Public/js/ueditor/themes/default/css/ueditor.css">
+    <script type="text/javascript" src="/learning/Public/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/learning/Public/js/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="/learning/Public/js/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/learning/Public/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+    window.UEDITOR_HOME_URL = "http://localhost/learning/";
+    
+    </script>
 </head>
+
 <body>
-
-<form method="POST" action="" enctype="multipart/form-data" id="form1">
-<table id="main" style="width:50%;">
-
-<tr>
-	<td></td>
-	<td>
-	<!-- <input type="hidden" name="id" value="<?php echo (!empty($model['id'])?$model['id']:0); ?>"> -->
-	<input type="hidden" name="id" value="{$model['id']?(int)$model['id']:0}">
-	</td>
-</tr>
-
-<tr>
-<td>标题：</td>
-<td>
-<input type="text" id="title" name="title" value="{$model.title}" />
-剩余<span class="remain-word">20</span>字
-<span class="tips"></span></td>
-</tr>
-<tr>
-<td valign="top">内容：</td>
-<td>
-<textarea id="content" name="content" style="width:400px;height:150px;">{$model.content}</textarea>
-<span class="tips"></span>
-</td>
-<tr>
-<td>作者：</td>
-<td>
-<input type="text" id="author" name="author" style="width:120px;" value="{$model.author}">
-<span class="tips"></span>
-</td>
-<tr>
-<td></td>
-<td><input type="submit" value="提交"></td>
-</tr>
-</form>
-</body>
-<script type="text/javascript" src="/learning/Public/js/jquery-2.1.1.min.js"></script>
+<div class="line">
+    <a href="{:U('Home/News/lists')}">返回列表</a>
+</div>
+    <form method="POST" action="" id="form1">
+        <table id="main" style="width:99%;">
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" name="id" value="<?php echo (!empty($model['id'])?$model['id']:0); ?>"> 
+                </td>
+            </tr>
+            <tr>
+                <td width="80px">标题：</td>
+                <td>
+                    <input type="text" id="title" name="title" value="{$model.title}" /> 
+                    <span class="num">剩余<span>20</span>字</span>
+                    <span class="tips"></span></td>
+            </tr>
+            <tr>
+                <td valign="top">内容：</td>
+                <td>
+                    <!-- 
+                    <textarea id="content" name="content" style="width:400px;height:150px;">{$model.content}</textarea> -->
+                    <script type="text/plain" id="editor" name="content">{$model.content}</script>
+                    <span class="tips"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>作者：</td>
+                <td>
+                    <input type="text" id="author" name="author" style="width:120px;" value="{$model.author}">
+                    <span class="tips"></span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="提交">
+                </td>
+            </tr>
+		</table>
+    </form>
+<script type="text/javascript">
+	var ue = UE.getEditor('editor', {
+        initialFrameWidth: "100%",
+        //默认的编辑区域高度
+        initialFrameHeight: 300,
+        //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+        toolbars: [
+            ['FullScreen', 
+                'Source', 
+                'Undo', 
+                'Redo', 
+                'Bold',
+                'simpleupload', //单图上传,
+                'insertimage',
+                'emotion',
+                'attachment'
+            ]
+        ],
+        maximumWords:800,
+        serverUrl: "/learning/Public/js/ueditor/php/controller.php?action=config",
+        imagePathFormat: "/upload/image/{filename}",
+        imageUrlPrefix: "http://localhost/learning/"
+    });
+</script>
 <script type="text/javascript" src="/learning/Public/js/news.js"></script>
+</body>
 </html>
