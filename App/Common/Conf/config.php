@@ -16,16 +16,24 @@ $config_all = array(
     // 调试
     'SHOW_PAGE_TRACE'      => true,
 
-    'REDIS_HOST'           => '127.0.0.1',
-    'REDIS_PORT'           => '6379', //端口号
-    'REDIS_AUTH'           => '',
-    'REDIS_TIMEOUT'        => '300', //超时时间
-    'REDIS_DB_PREFIX'      => '',
+    // 'REDIS_HOST'           => '127.0.0.1',
+    // 'REDIS_PORT'           => '6379', //端口号
+    // 'REDIS_AUTH'           => '',
+    // 'REDIS_TIMEOUT'        => '300', //超时时间
+    // 'REDIS_DB_PREFIX'      => '',
 
-    'DATA_CACHE_TYPE'      => 'Redis', // 查询缓存
-    'DATA_CACHE_TIMEOUT'   => 1,
-    'DATA_CACHE_TIME'      => 60,
-    'DATA_CACHE_PREFIX'    => '',
+    // 'DATA_CACHE_TYPE'      => 'Redis', // 查询缓存
+    // 'DATA_CACHE_TIMEOUT'   => 1,
+    // 'DATA_CACHE_TIME'      => 60,
+    // 'DATA_CACHE_PREFIX'    => '',
+    /*Redis设置*/  
+    'REDIS_HOST'        => '127.0.0.1', //主机  
+    'REDIS_PORT'        => 6379, //端口  
+    'REDIS_DBNAME'          => '', //库名  
+    'REDIS_CTYPE'           => 1, //连接类型 1:普通连接 2:长连接  
+    'REDIS_TIMEOUT'         => 0, //连接超时时间(S) 0:永不超时 
+
+    'DOMAIN'=>'http://localhost/learning/',
 );
 
 switch ($_SERVER['SERVER_NAME']) {
