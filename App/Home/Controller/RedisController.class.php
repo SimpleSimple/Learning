@@ -15,8 +15,12 @@ class RedisController extends Controller {
         // var_dump($redis->ping());
 
         $redis = new \Think\Cache\Driver\Redis(array('host' => '127.0.0.1', 'port' => 6379, timeout => 60));
-        print_r($redis->get("user:userid:1:username"));
-        print_r($redis->get("*"));
+        //获取所有用户，遍历Redis键值
+        $list = D('user')->select();
+        foreach ($list as $k => $v) {
+            print_r('user:userid:'.$v['id'].':username '.$redis->get("user:userid:".$v['id'].":username"));
+            print_r("<br/>");
+        }        
 
     }
 }
