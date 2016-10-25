@@ -1,9 +1,9 @@
 <?php
-require_once "database.php";
-require_once "news.php";
-require_once "config.php";
+// require_once "database.php";
+// require_once "news.php";
+// require_once "config.php";
 
-require_once "construct.php";
+// require_once "construct.php";
 
 // $link   = db_connect();
 // $result = addNews($link, '这是一个牛逼哄哄的标题\n\n不信你看看', '');
@@ -12,7 +12,7 @@ require_once "construct.php";
 // // $news = getAllNews($link);
 // // var_dump($news);
 
-// print_r(APP_PATH);
+require_once "database.php";
 
-
-$people = new People();
+$db = new Database('127.0.0.1', 'root', '', 'test');
+var_dump($db->connect());

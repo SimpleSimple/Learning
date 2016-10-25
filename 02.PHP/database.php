@@ -7,7 +7,8 @@ function db_connect() {
     $link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB)
     or die("Error: " . mysqli_error($link));
     if (!mysqli_set_charset($link, "utf8")) {
-        printf("Error: " . mysqli_error($link));}
+        printf("Error: " . mysqli_error($link));
+    }
     return $link;
 }
 
@@ -22,15 +23,15 @@ class Database {
     private $myQuery    = "";
     private $numResults = "";
 
-    // public function __construct($server, $user, $password, $db) {
-    //     $this->server   = $server;
-    //     $this->user     = $user;
-    //     $this->password = $password;
-    //     $this->db       = $db;
-    // }
+    public function __construct($db_host, $db_user, $db_pass, $db_name) {
+        $this->db_host = $db_host;
+        $this->db_user = $db_user;
+        $this->db_pass = $db_pass;
+        $this->db_name = $db_name;
+    }
 
     public function connect() {
-        if (!this->conn) {
+        if (!$this->conn) {
             $myconn = @mysql_connect($this->db_host, $this->db_user, $this->db_pass);
             if ($myconn) {
                 $seldb = @mysql_select_db($this->db_name, $myconn);
@@ -50,7 +51,7 @@ class Database {
         }
 
     }
-    
+
     // Function to disconnect from the database
     public function disconnect() {
         // If there is a connection to the database
@@ -250,3 +251,6 @@ class Database {
         return mysql_real_escape_string($data);
     }
 }
+
+// $db = new Database('127.0.0.1', 'root', '', 'test');
+// var_dump($db->connect());
