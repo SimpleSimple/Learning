@@ -13,7 +13,7 @@ namespace Home\Controller;
  * (这里没有使用Thinkphp例子中写的Controller控制器，AppController是继承Controller的，这样你就可以在app中添加整个项目都会用到的方法了)
  */
 use Common\Lib\BaseController;
-class IndexController extends BaseController {
+class IndexController extends Controller {
     public function index(){
 		echo 'home';
 
