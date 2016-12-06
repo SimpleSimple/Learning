@@ -8,4 +8,8 @@ class TestController extends Controller {
 	public function index() {
 		return $this->display();
 	}
+
+	public function demo01(){
+		return $this->display();
+	}
 }
