@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>瀑布流学习</title>
+	<title></title>
 </head>
 <body>
+<a href="https://www.example.com" class="popup">Example</a>
+<script type="text/javascript">
+	window.onload=function(){
+		if(!document.getElementsByTagName) return;
+		var links = document.getElementsByTagName('a');
+		for (var i = 0; i < links.length; i++) {
+			console.log(links[i].getAttribute('class'));
+			if (links[i].getAttribute('class')=='popup') {
+				// console.log(links[i].getAttribute('href'));
+				links[i].click=function(){
+					popUp(links[i].getAttribute('href'));
+					return false;
+				}
+			}
+		}
+	}
 
+	function popUp(href) {
+		// window.alert(href);
+		window.open(href, 'popup', );
+	}
+</script>
 </body>
 </html>
