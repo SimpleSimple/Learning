@@ -2,9 +2,35 @@
 <html>
 <head>
 	<title></title>
+	<script type="text/javascript" src="__JS__/react.js"></script>
+	<script type="text/javascript" src="__JS__/react-dom.js"></script>
+	<script type="text/javascript" src="__JS__/browser.min.js"></script>
 </head>
 <body>
 <h1>React demo</h1>
+    <div id="example"></div>
+<script type="text/babel">
+	var NotesList = React.createClass({
+		render:function(){
+			return (
+				<ol>
+					{
+						React.Children.map(this.props.children, function(child){
+							return <li>{child}</li>;
+						})
+					}
+				</ol>
+			);
+		}
+	});
 
+	ReactDOM.render(
+		<NotesList>
+			<span>hello</span>
+			<span>world</span>
+		</NotesList>,
+		document.getElementById('example')
+	);
+</script>
 </body>
 </html>
