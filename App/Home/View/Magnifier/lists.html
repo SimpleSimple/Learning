@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+    </title>
+    <script type="text/javascript" src="__JS__/lufylegend-1.10.1.js"></script>
+</head>
+
+<body>
+    <!-- <canvas height="100" id="myCanvas" width="200">
+    </canvas> -->
+    <div id="mylegend"></div>
+    <script type="text/javascript">
+    // onload = function() {
+    //     draw();
+    // }
+
+    // function draw() {
+    //     var canvas = document.getElementById('myCanvas');
+    //     if (!canvas || !canvas.getContext) return false;
+    //     var ctx = canvas.getContext("2d");
+
+    //  	// ctx.lineWidth=10;
+    //  	// ctx.strokeStyle="#ff0000";
+    //  	// ctx.lineCap="butt";
+    //  	// ctx.beginPath();
+    //  	// ctx.moveTo(10,10);
+    //  	// ctx.lineTo(150,50);
+    //  	// ctx.stroke();
+
+    //  	// ctx.lineCap="round";
+    //  	// ctx.beginPath();
+    //  	// ctx.moveTo(10,40);
+    //  	// ctx.lineTo(150,40);
+    //  	// ctx.stroke();
+
+    //  	// ctx.lineCap="square";
+    //  	// ctx.beginPath();
+    //  	// ctx.moveTo(10,70);
+    //  	// ctx.lineTo(150,70);
+    //  	// ctx.stroke();
+
+    //  	/* 画矩形 */
+    //  	// ctx.beginPath();     	
+    //  	// ctx.strokeRect(10,50,70,40);
+
+    //  	/* 二次贝赛尔曲线 */  
+    //  	// ctx.lineWidth=1;   	
+    //  	// ctx.beginPath();
+    //  	// ctx.moveTo(100,100);
+    //  	// ctx.quadraticCurveTo(20,50,200,20);
+    //  	// ctx.stroke();
+
+    //  	/* 绘制文本 */
+    //  	ctx.beginPath();
+    //  	ctx.font="30px Arial";
+    //  	ctx.strokeText("Hello World",100,50);
+
+    //  	ctx.beginPath();
+    //  	ctx.font="50 宋体";
+    //  	ctx.fillText("Hello World",100,150);
+    // }
+    var loader, anime, layer;
+    init(50, 'mylegend', 500, 350, main);
+
+    function main() {
+        loader = new LLoader();
+        loader.addEventListener(LEvent.COMPLETE, loadBitmapdata);
+        loader.load("http://imgsrc.baidu.com/forum/w%3D580/sign=32e86cce5edf8db1bc2e7c6c3922dddb/d000baa1cd11728b2998e174c8fcc3cec3fd2c2a.jpg", "bitmapData");
+    }
+
+    function loadBitmapdata(event) {
+        var bitmapdata = new LBitmapData(loader.content, 0, 0, 64, 64);
+        var list = LGlobal.divideCoordinate(256, 256, 4, 4);
+
+        layer = new LSprite();
+        addChild(layer);
+        anime = new LAnimation(layer, bitmapdata, list);
+        layer.addEventListener(LEvent.ENTER_FRAME, onframe);
+
+        // var bitmap=new LBitmap(bitmapdata);
+        // bitmap.x=50;
+        // bitmap.y=50;
+        // //图片旋转60度
+        // bitmap.rotate=60;
+        // //图片透明度设置为0.4
+        // bitmap.alpha=0.4;
+        // addChild(bitmap);
+    }
+
+    function onframe() {
+
+    }
+    </script>
+</body>
+
+</html>
