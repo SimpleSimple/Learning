@@ -29,13 +29,19 @@ class TestController extends Controller {
 			// array('password', 'checkPwd', '密码格式不正确', 0, 'function'), // 自定义函数验证密码格式
 		);
 
-		if (IS_POST) {
-			// var_dump($_POST);
+		if (IS_POST) {			
 			$AdminUser = D('AdminUser');
 			if (!$AdminUser->validate($rules)->create()) {
 				exit($AdminUser->getError());
 			}
-			var_dump('hello');
+			// var_dump('hello');
+			$data = $AdminUser->create($_POST);
+			var_dump($data);
+			$res = $AdminUser->add($data);
+			var_dump($AdminUser->getLastSql());
+			if (!$res) {
+				return $this->error('添加失败');
+			}
 		}
 		return $this->display();
 	}
