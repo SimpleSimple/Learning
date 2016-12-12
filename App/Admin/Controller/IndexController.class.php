@@ -5,8 +5,9 @@
  */
 namespace Admin\Controller;
 
-use Admin\Controller\CommonController;
-class IndexController extends CommonController {
+// use Admin\Controller\CommonController;
+use Think\Controller;
+class IndexController extends Controller {
     public function index(){
 
 

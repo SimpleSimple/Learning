@@ -42,6 +42,13 @@ return array(
 	'MENU_FIELD_NODE_ID'		=> 'id',			// 菜单节点表中表示角色自增的字段
 	'MENU_FIELD_NODE_ID_OTHER'	=> 'menu_id',		// 菜单节点id在其他表中的表示
 
+    'MODULE_ALLOW_LIST'    =>    array('Home','Admin','User'),  //可访问模块
+    'DEFAULT_MODULE'       =>    'Admin',   //默认模块
 
+    'TMPL_PARSE_STRING' => array(
+		'__JS__' => __ROOT__ . '/Public/js/' . MODULE_NAME,
+		'__CSS__' => __ROOT__ . '/Public/css/' . MODULE_NAME,
+		'__IMG__' => __ROOT__ . '/Public/images/' . MODULE_NAME,
+	),
 
 );
