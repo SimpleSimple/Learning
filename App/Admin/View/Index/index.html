@@ -1,28 +1,45 @@
-<include file="Public/side" />
+</block>
+<extend name="./Public/base" />
+<block name="main-right">
+<el-table :data="tableData" style="width: 100%">
+  <el-table-column
+    type="selection"
+    width="55">
+  </el-table-column>
+  <el-table-column
+    prop="name"
+    label="姓名"
+    width="120"></el-table-column>
+  <el-table-column
+    prop="address"
+    label="地址"
+    width="120"></el-table-column>
+ 
+</el-table>
 
-		<div class="col-xs-9" role="main">
-			<div class="bs-docs-section">
-				<div class="page-header">
-					<h1 id="overview">概览</h1>
-				</div>
-				<p class="lead">深入了解Bootstrap底层结构的关键部分，包括我们让web开发变得更好、更快、更强壮的最佳实践。</p>
+<el-dialog id="modal" v-model="visible" title="Hello world">
+  <p>欢迎使用 Element</p>
+</el-dialog>
 
-				<h3 id="overview-doctype">HTML5文档类型</h3>
-				<p>Bootstrap使用到的某些HTML元素和CSS属性需要将页面设置为HTML5文档类型。在你项目中的每个页面都要参照下面的格式进行设置。</p>
-				<div class="highlight">
-					<pre>
-						<code class="language-html xml">
-							<span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="title">html</span> <span
-								class="attribute">lang</span>=<span class="value">"zh-cn"</span>&gt;</span>
-  ...
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-						</code>
-					</pre>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      visible : function(){
+          return { visible: false }
+      },
+      tableData:[
+        { name: '路西', address: '中国广东广州天河区花城大道19号' },
+        { name: '大飞', address: '广东广州越秀区广州大道中' },
+      ]
+    }
+  });
 
-				</div>
-			</div>
-		</div>
-
-<include file="Public/footer" />
-
+  // new Vue({
+  //     el: '#app',
+  //     data: function(){
+  //       return { visible: false }
+  //     }
+  //   })
+</script>
+</block>
