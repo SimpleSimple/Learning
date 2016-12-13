@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style type="text/css">
+.nprogress-container {
+  position: fixed !important;
+  width: 100%;
+  height: 50px;
+  z-index: 2048;
+  pointer-events: none;
+
+  #nprogress {
+    $color: #48e79a;
+
+    .bar {
+      background: $color;
+    }
+    .peg {
+      box-shadow: 0 0 10px $color, 0 0 5px $color;
+    }
+
+    .spinner-icon {
+      border-top-color: $color;
+      border-left-color: $color;
+    }
+  }
+}
+.app-navbar {
+  position: fixed;
+  min-width: 100%;
+  z-index: 1024;
+  box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
+
+  .container {
+    margin: auto 10px;
+  }
+
+  .nav-right {
+    align-items: stretch;
+    align-items: stretch;
+    flex: 1;
+    justify-content: flex-end;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+.hero-brand {
+  .vue {
+    margin-left: 10px;
+    color: #36AC70;
+  }
+  .admin {
+    color: #28374B;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <section class="hero is-bold app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
+        <div class="hero-head">
+          <nav class="nav">
+            <div class="nav-left">
+              <a class="nav-item is-hidden-tablet" @click="toggleSidebar(!sidebar.opened)">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="nav-center">
+              <a class="nav-item hero-brand" href="/">
+                <img src="~assets/logo.svg" :alt="pkginfo.description">
+                <tooltip :label="'v' + pkginfo.version" placement="right" type="success" size="small" :no-animate="true" :always="true" :rounded="true">
+                  <div class="is-hidden-mobile">
+                    <span class="vue">Vue</span><strong class="admin">Admin</strong>
+                  </div>
+                </tooltip>
+              </a>
+            </div>
+            <div class="nav-right is-flex"></div>
+          </nav>
+        </div>
+      </section>
+      <!-- Side -->
+      <aside class="menu app-sidebar animated" :class="{ slideInLeft: show, slideOutLeft: !show }">
+        <p class="menu-label">
+          General
+        </p>
+        <ul class="menu-list">
+          <li v-for="(item, index) in menu">
+            <router-link :to="item.path" :exact="true" :aria-expanded="isExpanded(item) ? 'true' : 'false'" v-if="item.path" @click.native="toggle(index, item)">
+              <span class="icon is-small"><i :class="['fa', item.meta.icon]"></i></span>
+              {{ item.meta.label || item.name }}
+              <span class="icon is-small is-angle" v-if="item.children && item.children.length">
+                <i class="fa fa-angle-down"></i>
+              </span>
+            </router-link>
+            <a :aria-expanded="isExpanded(item)" v-else @click="toggle(index, item)">
+              <span class="icon is-small"><i :class="['fa', item.meta.icon]"></i></span>
+              {{ item.meta.label || item.name }}
+              <span class="icon is-small is-angle" v-if="item.children && item.children.length">
+                <i class="fa fa-angle-down"></i>
+              </span>
+            </a>
+
+            <expanding v-if="item.children && item.children.length">
+              <ul v-show="isExpanded(item)">
+                <li v-for="subItem in item.children" v-if="subItem.path">
+                  <router-link :to="generatePath(item, subItem)">
+                    {{ subItem.meta && subItem.meta.label || subItem.name }}
+                  </router-link>
+                </li>
+              </ul>
+            </expanding>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </body>
+</html>
