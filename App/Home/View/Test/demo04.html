@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 	<title></title>
+	<script type="text/javascript" src="__JS__/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript">
 	function loadJS(src){
 		var ele = document.createElement('script');
@@ -23,16 +33,46 @@
 
 <h1>Vue.js</h1>
 <div id="app">
-	{{ message }}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered table-hover">
+		    	<tr>
+		    		<td class=".col-sm-4">ID</td>
+		    		<td class=".col-sm-4">菜单名</td>
+		    		<td class=".col-sm-4">菜单路径</td>
+		    	</tr>
+		    	<tr>
+		    		<td></td>
+		    		<td></td>
+		    		<td></td>
+		    	</tr>
+			</table>
+		</div>
+	</div>
 </div>
-<script type="text/javascript" src="__JS__/vue.js"></script>
+</div>
+<script type="text/javascript" src="__JS__/vue/dist/vue.js"></script>
 <script type="text/javascript">
-	var app = new Vue({
-		el: '#app',
-		data: {
-			message:'hello world'
-		}
-	});
+	// var app = new Vue({
+	// 	el: '#app',
+	// 	data: {
+	// 		//message:''
+	// 	},
+	// 	template: '<div>{{ message }}</div>'
+	// });
+	// app.message = "Hello bb";
+	
+	$(function(){
+		$.ajax({
+			url:'',
+			type:'POST',
+			data:'',
+			success:function(data){
+				console.log(data);
+			}
+		});
+	})	
 </script>
 </body>
 </html>

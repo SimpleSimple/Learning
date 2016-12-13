@@ -8,8 +8,14 @@ class TestController extends Controller {
 	public function index() {
 		return $this->display();
 	}
-
+	/**
+	 * Vue学习页面
+	 * @return
+	 */
 	public function demo04(){
+		if(IS_POST){
+			// D('Menu')
+		}
 		$this->display();
 	}
 
