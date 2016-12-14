@@ -10,13 +10,17 @@ class TestController extends Controller {
 	}
 	/**
 	 * Vue学习页面
-	 * @return
 	 */
 	public function demo04(){
 		if(IS_POST){
-			// D('Menu')
+			$list = D('Menu')->select();
+			// $arr = ['code'=>1, 'data'=>'', 'msg'=>''];
+			// print_r(json_encode($arr));die();
+			$retstr = empty($list) ? [] : $list;
+			echo (json_encode($retstr));
+			return;
 		}
-		$this->display();
+		return $this->display();
 	}
 
 	public function demo01() {

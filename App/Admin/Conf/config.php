@@ -46,9 +46,11 @@ return array(
     'DEFAULT_MODULE'       =>    'Admin',   //默认模块
 
     'TMPL_PARSE_STRING' => array(
+    	'__CommJS__' => __ROOT__ . '/Public/js/',
 		'__JS__' => __ROOT__ . '/Public/js/' . MODULE_NAME,
 		'__CSS__' => __ROOT__ . '/Public/css/' . MODULE_NAME,
 		'__IMG__' => __ROOT__ . '/Public/images/' . MODULE_NAME,
 	),
+
 
 );

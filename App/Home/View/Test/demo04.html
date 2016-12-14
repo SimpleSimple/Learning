@@ -38,14 +38,16 @@
 		<div class="col-md-12">
 			<table class="table table-bordered table-hover">
 		    	<tr>
-		    		<td class=".col-sm-4">ID</td>
+		    		<td class=".col-sm-2">ID</td>
 		    		<td class=".col-sm-4">菜单名</td>
-		    		<td class=".col-sm-4">菜单路径</td>
+		    		<td class=".col-sm-2">菜单路径</td>
+		    		<td class=".col-sm-4">菜单等级</td>
 		    	</tr>
-		    	<tr>
-		    		<td></td>
-		    		<td></td>
-		    		<td></td>
+		    	<tr v-for="item in data">		    		
+		    		<td >{{item.ID}}</td>
+		    		<td >{{item.Name}}</td>
+		    		<td >{{item.MenuUrl}}</td>
+		    		<td >{{item.LevelName}}</td>
 		    	</tr>
 			</table>
 		</div>
@@ -54,6 +56,7 @@
 </div>
 <script type="text/javascript" src="__JS__/vue/dist/vue.js"></script>
 <script type="text/javascript">
+
 	// var app = new Vue({
 	// 	el: '#app',
 	// 	data: {
@@ -62,14 +65,26 @@
 	// 	template: '<div>{{ message }}</div>'
 	// });
 	// app.message = "Hello bb";
-	
+	var app;
 	$(function(){
+		var url = "{:U('/Home/Test/demo04')}";
 		$.ajax({
-			url:'',
-			type:'POST',
-			data:'',
-			success:function(data){
+			url: url,
+			type: 'POST',
+			dataType: 'json',
+			success: function(data){
 				console.log(data);
+				if(data){
+					$.each(data,function(k,v){
+						if(v.Level == 0) data[k].LevelName='根节点';
+					})
+					app = new Vue({
+						el:'#app',
+						data: {
+							data
+						}
+					});
+				}
 			}
 		});
 	})	
