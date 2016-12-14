@@ -10,5 +10,7 @@ return array(
 		'__IMG__' => __ROOT__ . '/Public/images/' . MODULE_NAME,
 	),
 
+    'MODULE_ALLOW_LIST'    =>    array('Home','Admin','User'),  //可访问模块
+    'DEFAULT_MODULE'       =>    'Home',   //默认模块
 
 );
