@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+	<script type="text/javascript" src="__JS__/vue/dist/vue.js"></script>
+	<style src="__JS__/radon-ui/dist/static/randon-ui.css"></style>
+</head>
+<body>
+<h1>使用radon-ui组件</h1>
+<div id="example">
+	<my-component></my-component>
+</div>
+<script type="text/javascript">
+	// 定义
+	Vue.component('my-component', {
+		template: '<div>A custom component</div>'
+	});
+	// 注册
+	Vue.extend({
+		component:{
+			'my-component': {
+				template: '<div>A custom component</div>'
+			}
+		}
+	});
+	// 创建根实例
+	new Vue({
+		el: "#example"
+	});
+</script>
+
+</body>
+</html>
