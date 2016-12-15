@@ -44,10 +44,10 @@
 		    		<td class=".col-sm-4">菜单等级</td>
 		    	</tr>
 		    	<tr v-for="item in data">		    		
-		    		<td >{{item.ID}}</td>
-		    		<td >{{item.Name}}</td>
-		    		<td >{{item.MenuUrl}}</td>
-		    		<td >{{item.LevelName}}</td>
+		    		<td >{{item.id}}</td>
+		    		<td >{{item.name}}</td>
+		    		<td >{{item.menu_url}}</td>
+		    		<td >{{item.levelname}}</td>
 		    	</tr>
 			</table>
 		</div>
@@ -76,7 +76,7 @@
 				console.log(data);
 				if(data){
 					$.each(data,function(k,v){
-						if(v.Level == 0) data[k].LevelName='根节点';
+						if(v.level == 0) data[k].levelname='根节点';
 					})
 					app = new Vue({
 						el:'#app',
