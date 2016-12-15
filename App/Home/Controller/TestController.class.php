@@ -8,11 +8,28 @@ class TestController extends Controller {
 	public function index() {
 		return $this->display();
 	}
+
+	/**
+	 * radon-ui
+	 * @return
+	 */
+	public function demo06() {
+		return $this->display();
+	}
+
+	/**
+	 * JS学习
+	 * @return
+	 */
+	public function demo05() {
+		return $this->display();
+	}
+
 	/**
 	 * Vue学习页面
 	 */
-	public function demo04(){
-		if(IS_POST){
+	public function demo04() {
+		if (IS_POST) {
 			$list = D('Menu')->select();
 			// $arr = ['code'=>1, 'data'=>'', 'msg'=>''];
 			// print_r(json_encode($arr));die();
@@ -43,11 +60,11 @@ class TestController extends Controller {
 		// 	// array('password', 'checkPwd', '密码格式不正确', 0, 'function'), // 自定义函数验证密码格式
 		// );
 
-		if(IS_POST){
+		if (IS_POST) {
 			$AdminUser = D('AdminUser');
 			$data = $AdminUser->get();
 			$result = $AdminUser->add();
-			if(!$result){
+			if (!$result) {
 				return $this->error('添加失败');
 			}
 			return $this->error('添加成功');
