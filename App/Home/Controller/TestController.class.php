@@ -4,10 +4,22 @@ namespace Home\Controller;
 use Think\Controller;
 
 class TestController extends Controller {
-
+	/**
+	 * 首页
+	 * @return
+	 */
 	public function index() {
 		return $this->display();
 	}
+
+	/**
+	 * 使用Vue做下拉分页数据加载
+	 * @return
+	 */
+	public function demo07() {
+		return $this->display();
+	}
+
 
 	/**
 	 * radon-ui
