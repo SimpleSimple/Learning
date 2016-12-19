@@ -1,9 +1,8 @@
 <?php
 namespace Home\Controller;
+use Home\Controller\BaseController;
 
-use Think\Controller;
-
-class TestController extends Controller {
+class TestController extends BaseController {
 	/**
 	 * 首页
 	 * @return
@@ -101,4 +100,13 @@ class TestController extends Controller {
 		// return $this->display();
 	}
 
+	public function add(){
+		if(IS_POST){
+			$arr = array('code'=>-100,'data'=>'','msg'=>'');
+			echo json_encode($arr);
+			return;
+		}
+		$arr = array('code'=>-100,'data'=>'','msg'=>'');
+		$this->sucJson($arr);
+	}
 }
