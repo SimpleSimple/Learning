@@ -36,7 +36,7 @@ $config_all = array(
     'DOMAIN'               => 'http://localhost/Learning/',
 
     // 'MODULE_ALLOW_LIST'    =>    array('Home','Admin','User'),  //可访问模块
-    'DEFAULT_MODULE'       =>    'Home',   //默认模块
+    // 'DEFAULT_MODULE'       =>    'Home',   //默认模块
 );
 
 switch ($_SERVER['SERVER_NAME']) {
