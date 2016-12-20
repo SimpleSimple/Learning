@@ -20,7 +20,8 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 define('APP_DEBUG', true);
 // 是否开启生成安全文件
 define('BUILD_DIR_SECURE', false);
-
+// 绑定访问Home模块
+define('BIND_MODULE','Home');
 // 定义应用目录
 define('APP_PATH', './App/');
 
