@@ -12,10 +12,18 @@ class MenuController extends BaseController {
 	}
 
 	public function add() {
+		// var_dump(I());die();
 		if (IS_POST) {
-			$arr = array('code' => -100, 'data' => '', 'msg' => '');
-			echo json_encode($arr);
-			return;
+			$Menu = D('Menu');
+			$data['name'] = I('name');
+			$data['menu_url'] = I('menuurl');
+			$result = $Menu->add($data);
+			if(!$result){
+				$arr = array('code' => -100, 'data' => '', 'msg' => '添加失败');
+				return $this->sucJson($arr);
+			}
+			$arr = array('code' => 0, 'data' => '', 'msg' => '添加成功');
+			return $this->sucJson($arr);
 		}
 		$arr = array('code' => -100, 'data' => '', 'msg' => '');
 		$this->sucJson($arr);

@@ -175,11 +175,15 @@ $(function(){
 
 function add(){
     $("#save").bind("click",function(){
-        alert($("#form-member-add").serialize());
+        // alert($("#form-member-add").serialize());
+        if(validate()!=true){
+          return;
+        }
         $.ajax({
+          type:'POST',
             url: url,
             data: $("#form-member-add").serialize(),
-            type:'POST',
+            dataType: 'json',
             success: function(data){
                 console.log(data);
             }
@@ -189,6 +193,19 @@ function add(){
 
 function ShowData(InputName,Data) {
     alert(InputName + ":" + Data); 
+}
+
+function validate(){
+  var name = $.trim($("input[name='name']").val());
+  var url = $.trim($("input[name='menuurl']").val())
+  if(name=='' || name == null) {
+    alert('请输入菜单名');
+    return false;}
+  if(url == '' || url == null) {
+    alert('请输入菜单路径');
+    return false;
+  }
+  return true;
 }
 
 </script>
