@@ -8,6 +8,12 @@ class TestController extends BaseController {
 	 * @return
 	 */
 	public function index() {
+		// array_combine 合并两个数组为一个新的数组，其中一个数组元素为键名，另一个为键值
+		$fname = array('Bill','Steve','Mary');
+		$age = array(60, 56, 31);
+		$c = array_combine($fname, $age);
+		var_dump($c);		
+		// array_walk
 		return $this->display();
 	}
 
