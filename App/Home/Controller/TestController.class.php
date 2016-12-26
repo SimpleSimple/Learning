@@ -8,12 +8,41 @@ class TestController extends BaseController {
 	 * @return
 	 */
 	public function index() {
+
+		// array_push
+		$arr1 = ['SH10000', 'SZ10000', 'SH100002'];
+		$array = [];
+		foreach ($arr1 as $key => $value) {
+			array_push($array, $value);
+		}
+		var_dump($array);
+
+		// 数组去重
+		$arr = array(
+			'0' => array('code' => 'SH100001', 'name' => '平安中国'),
+		);
+		$arr2 = array(
+			'0' => array('code' => 'SH100001', 'name' => '平安中国', 'price' => '34.95'),
+		);
+		$list = array_merge($arr, $arr2);
+		var_dump($list);
+		$list = $arr2+$arr;
+		var_dump($list);
+
+		
+
 		// array_combine 合并两个数组为一个新的数组，其中一个数组元素为键名，另一个为键值
 		$fname = array('Bill','Steve','Mary');
 		$age = array(60, 56, 31);
 		$c = array_combine($fname, $age);
 		var_dump($c);		
 		// array_walk
+		
+
+		
+		$class = new \Home\Controller\JsonResult();
+		$class->getMarket();
+
 		return $this->display();
 	}
 
@@ -24,7 +53,6 @@ class TestController extends BaseController {
 	public function demo07() {
 		return $this->display();
 	}
-
 
 	/**
 	 * radon-ui
@@ -106,13 +134,13 @@ class TestController extends BaseController {
 		// return $this->display();
 	}
 
-	public function add(){
-		if(IS_POST){
-			$arr = array('code'=>-100,'data'=>'','msg'=>'');
+	public function add() {
+		if (IS_POST) {
+			$arr = array('code' => -100, 'data' => '', 'msg' => '');
 			echo json_encode($arr);
 			return;
 		}
-		$arr = array('code'=>-100,'data'=>'','msg'=>'');
+		$arr = array('code' => -100, 'data' => '', 'msg' => '');
 		$this->sucJson($arr);
 	}
 }
