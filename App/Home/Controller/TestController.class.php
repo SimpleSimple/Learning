@@ -38,10 +38,8 @@ class TestController extends BaseController {
 		var_dump($c);		
 		// array_walk
 		
-
-		
-		$class = new \Home\Controller\JsonResult();
-		$class->getMarket();
+		// $class = new \Home\Controller\JsonResult();
+		// $class->getMarket();
 
 		return $this->display();
 	}
