@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<script type="text/javascript" src="__JS__/react.js"></script>
-	<script type="text/javascript" src="__JS__/react-dom.js"></script>
-	<script type="text/javascript" src="__JS__/browser.min.js"></script>
-</head>
-<body>
-<div id="example"></div>
-<script type="text/babel" src="__JS__/demo02.js"></script>
 
+<head>
+    <title></title>
+</head>
+
+<body>
 </body>
+<script type="text/javascript">
+var Set = (function invocation() {
+    function Set() {
+        this.values = {};
+        this.n = 0;
+        this.add.apply(this, arguments);
+    }
+
+    Set.prototype.contains = function(value) {
+        return this.values.hasOwnProperty();
+    }
+    Set.prototype.size = function() {
+        return this.n;
+    }
+    Set.prototype.add = function() {}
+    Set.prototype.remove = function() {}
+
+    function v2s(val) {}
+
+    function objectId(o) {}
+    var nextId = 1;
+
+    return Set;
+
+}());
+
+// var collections;
+// if(!collections) collections = {};
+
+// 定义sets模块
+// collections.sets = (function namespace(){
+
+// 	return {
+// 		AbstractSet: AbstractSet,
+// 		NotSet: NotSet,
+// 		AbstractEnumerableSet: AbstractEnumerableSet,
+// 		SingletonSet: SingletonSet,
+// 		AbstractWritableSet: AbstractWritableSet,
+// 		ArraySet: ArraySet
+// 	};
+// }())
+// 
+var Set = {};
+
+(function(){
+	console.log('hello kitty');
+})()
+</script>
+
 </html>
