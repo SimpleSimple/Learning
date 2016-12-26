@@ -4,10 +4,22 @@ use Home\Controller\BaseController;
 
 class MenuController extends BaseController {
 	public function index() {
-		$list = D('Menu')->select();
-		$retstr = empty($list) ? [] : $list;
+		if (IS_POST) {
+			$where = [];
+			$list = D('Menu')->where($where)->select();
+			$count = D('Menu')->where($where)->count();
+			foreach ($list as $key => $val) {
+				if ($val['level'] == 0) {
+					$list[$key]['level_name'] = '根节点';
+				} elseif ($val['level'] == 1) {
+					$list[$key]['level_name'] = '一级节点';
+				}
+
+			}
+			$arr = ['rows' => $list, 'total' => $count];
+			$this->assign("MenuList", $list);
+		}
 		
-		$this->assign("MenuInfo", $retstr);
 		return $this->display();
 	}
 
@@ -18,7 +30,7 @@ class MenuController extends BaseController {
 			$data['name'] = I('name');
 			$data['menu_url'] = I('menuurl');
 			$result = $Menu->add($data);
-			if(!$result){
+			if (!$result) {
 				$arr = array('code' => -100, 'data' => '', 'msg' => '添加失败');
 				return $this->sucJson($arr);
 			}
