@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+    <title></title>
 </head>
+
 <body>
-<a href="https://www.example.com" class="popup">Example</a>
-<script type="text/javascript">
-	window.onload=function(){
-		if(!document.getElementsByTagName) return;
-		var links = document.getElementsByTagName('a');
-		for (var i = 0; i < links.length; i++) {
-			console.log(links[i].getAttribute('class'));
-			if (links[i].getAttribute('class')=='popup') {
-				// console.log(links[i].getAttribute('href'));
-				links[i].click=function(){
-					popUp(links[i].getAttribute('href'));
-					return false;
-				}
-			}
-		}
-	}
+    <a href="https://www.example.com" class="popup">Example</a>
+    <script type="text/javascript">
+    window.onload = function() {
+        if (!document.getElementsByTagName) return;
+        var links = document.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++) {
+            console.log(links[i].getAttribute('class'));
+            if (links[i].getAttribute('class') == 'popup') {
+                // console.log(links[i].getAttribute('href'));
+                links[i].click = function() {
+                    popUp(links[i].getAttribute('href'));
+                    return false;
+                }
+            }
+        }
+    }
 
-	function popUp(href) {
-		// window.alert(href);
-		window.open(href, 'popup', );
-	}
-</script>
-<h1>require.js VS sea.js</h1>
+    function popUp(href) {
+        // window.alert(href);
+        // window.open(href, 'popup', );
+    }
+    </script>
+    <h1>HTML5</h1>
+    <canvas id='canvas' width="640" height="480" style="border:black 1px solid"></canvas>
+<!--     <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1482827678&di=94e15461680a06b9daad847073d0053c&src=http://pic.qiantucdn.com/58pic/17/79/87/36V58PIChwm_1024.jpg" id="loadimg"> -->
+    <script type="text/javascript">
+    var canvas = document.getElementById('canvas').getContext('2d');
 
-<h1>React.js</h1>
-
+    // 1.0
+    // var image = document.getElementById('loadimg');
+    // 2.0
+    var image = new Image();
+    image.src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1482827678&di=94e15461680a06b9daad847073d0053c&src=http://pic.qiantucdn.com/58pic/17/79/87/36V58PIChwm_1024.jpg";
+    image.onload = function(){
+    	console.log('image loaded');
+    }
+    // 在（0,350）位置绘制图片
+    // canvas.drawImage(image, 0, 0);
+    // 
+    canvas.drawImage(image, 0, 0, 400, 425);
+    </script>
 </body>
+
 </html>
