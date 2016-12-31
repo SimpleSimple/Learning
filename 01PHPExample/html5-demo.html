@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/mouse.js"></script>
+    <script type="text/javascript" src="js/singleplayer.js"></script>
+    <script type="text/javascript" src="js/maps.js"></script>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
+
+<body>
+    <div id="gamecontainer">
+        <div id="gamestartscreen" class="gamelayer">
+            <span id="singleplayer" onclick="singleplayer.start();">Campaign</span>
+            <span id="multiplayer" onclick="multiplayer.start();">Multiplayer</span>
+        </div>
+    </div>
+    <div id="missionscreen" class="gamelayer">
+        <input type="button" id="entermission" onclick="singleplayer.play();">
+        <input type="button" id="exitmission" onclick="singleplayer.exit();">
+        <div id="missonbriefing">Welcome to your first mission.</div>
+    </div>
+    <div id="gameinterfacescreen" class="gamelayer">
+        <div id="gamemessages"></div>
+        <div id="callerpicture"></div>
+        <div id="cash"></div>
+        <div id="sidebarbuttons">
+        </div>
+        <canvas id="gamebackgroundcanvas" height="400" width="480"></canvas>
+        <canvas id="gameforegroundcanvas" height="400" width="480"></canvas>
+    </div>
+    <div id="loadingscreen" class="gamelayer">
+        <div id="loadingmessage"></div>
+    </div>
+</body>
+
+</html>
