@@ -33,10 +33,8 @@ $config_all = array(
     'REDIS_CTYPE'          => 1, //连接类型 1:普通连接 2:长连接
     'REDIS_TIMEOUT'        => 0, //连接超时时间(S) 0:永不超时
 
-    'DOMAIN'               => 'http://localhost/Learning/',
+    // 'DOMAIN'               => 'http://localhost/Learning/',
 
-    // 'MODULE_ALLOW_LIST'    =>    array('Home','Admin','User'),  //可访问模块
-    // 'DEFAULT_MODULE'       =>    'Home',   //默认模块
 );
 
 switch ($_SERVER['SERVER_NAME']) {
