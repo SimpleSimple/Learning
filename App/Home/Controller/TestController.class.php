@@ -132,6 +132,10 @@ class TestController extends BaseController {
 		// return $this->display();
 	}
 
+	public function demo08(){
+		$this->display();
+	}
+
 	public function add() {
 		if (IS_POST) {
 			$arr = array('code' => -100, 'data' => '', 'msg' => '');
